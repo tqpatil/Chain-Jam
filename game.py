@@ -146,7 +146,7 @@ def explodeObj(objectList, ignoreInd, targets):
                 dy = y2-y1
                 rads = atan2(-dy, dx)
                 rads %= 2 * pi
-                total_force = 5 + ((200-dist)*0.25)
+                total_force = 5 + ((200-dist)*0.2)
                 x_comp = 0.7 * total_force * cos(rads)
                 y_comp = total_force * sin(rads) + (0.2 * total_force * sin(rads))
                 objectList[i].velocity[0] +=(x_comp)
