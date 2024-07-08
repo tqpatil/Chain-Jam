@@ -218,6 +218,9 @@ def main(window,l):
     mixer.music.load("TitleScreen.ogg")
     mixer.music.set_volume(0.1)
     mixer.music.play(loops=-1)
+    pygame.font.init() 
+    font2 = pygame.font.SysFont('Comic Sans MS', 50)
+    surface2 = font2.render('Paused', False, (0, 0, 0))
     #********** Game variables **********
     quit = False
     bg_image = pygame.image.load('bg.png')
@@ -298,6 +301,8 @@ def main(window,l):
             my_font = pygame.font.SysFont('Comic Sans MS', 50)
             text_surface = my_font.render('Click for next level...', False, (0, 0, 0))
             window.blit(text_surface, (SCREEN_WIDTH/2-125,50))
+        if(simulatePhysics == False):
+            window.blit(surface2, (SCREEN_WIDTH/2-125,50))
         for i in range(len(images)):
             window.blit(pygame.transform.scale(images[i], (platforms[i].rect.width, platforms[i].rect.height)), (platforms[i].rect.left,platforms[i].rect.top - 70))
         for i in range(len(targets)):
@@ -435,6 +440,8 @@ def main(window,l):
                     setSideBar=False
                     mixer.Channel(4).set_volume(0.5)
                     mixer.Channel(4).play(pygame.mixer.Sound("reset.ogg"))
+                    for target in targets: 
+                        target.isExploded = False
 
         for i in range(len(objectsList)-1, -1 ,-1):
             if(objectsList[i].inSidebar == True):
