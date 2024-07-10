@@ -146,7 +146,7 @@ def explodeObj(objectList, ignoreInd, targets):
                 dy = y2-y1
                 rads = atan2(-dy, dx)
                 rads %= 2 * pi
-                total_force = 5 + ((200-dist)*0.2)
+                total_force = 5 + ((200-dist)*0.25)
                 x_comp = 0.7 * total_force * cos(rads)
                 y_comp = total_force * sin(rads) + (0.2 * total_force * sin(rads))
                 objectList[i].velocity[0] +=(x_comp)
@@ -289,7 +289,7 @@ def main(window,l):
                     if(target.rect.top > max_height):
                         max_height = target.rect.top
                 ceiling = Wall(0,max_height, 5, 5, None)
-            platforms = [Wall(600, 550, 200,150, log),Wall(600,250,200, 150, log)]
+            platforms = [Wall(600, 550, 200,150, log),Wall(600,200,200, 150, log)]
             images = [log,log]
         else:
             quit = True 
